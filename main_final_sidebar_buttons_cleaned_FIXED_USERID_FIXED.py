@@ -346,7 +346,8 @@ class LoginApp(ctk.CTk):
                 conn.close()
 
 
-    # def show_user_dashboard(self, user_id=None):
+    # def show_user_dashboard(self):
+        user_id = self.current_user_id
     #     for widget in self.winfo_children():
     #         widget.destroy()
 
@@ -435,7 +436,8 @@ class LoginApp(ctk.CTk):
     #     ctk.CTkLabel(self.details_frame, text="Availability Status", **label_style).place(x=40, y=190)
     #     ctk.CTkLabel(self.details_frame, text="Maintenance Requests", **label_style).place(x=40, y=240)
 
-    def show_user_dashboard(self, user_id=None):
+    def show_user_dashboard(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -543,7 +545,8 @@ class LoginApp(ctk.CTk):
             ctk.CTkLabel(self.details_frame, text=str(value), **value_style).place(x=300, y=y)
 
 
-    def show_rent_payment_screen(self, user_id=None):
+    def show_rent_payment_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -571,7 +574,7 @@ class LoginApp(ctk.CTk):
         ]
 
         for label, icon_path, y_pos, command in nav_buttons:
-            ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=lambda cmd=command: cmd(user_id) if cmd else None).place(x=70, y=y_pos)
+            ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=command).place(x=70, y=y_pos)
             icon = Image.open(icon_path).resize((30, 30), Image.LANCZOS)
             icon_ctk = ctk.CTkImage(light_image=icon, size=(30, 30))
             ctk.CTkLabel(self, image=icon_ctk, text="", fg_color="#3B3737").place(x=40, y=y_pos + 20, anchor="center")
@@ -681,7 +684,8 @@ class LoginApp(ctk.CTk):
         self.payment_button_btn.place(relx=0.5, rely=1.2, anchor="center")  
         conn.close()
 
-    def show_maintenance_screen(self, user_id=None):
+    def show_maintenance_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -711,7 +715,7 @@ class LoginApp(ctk.CTk):
         for label, icon_path, y_pos, command in sidebar_buttons:
             ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737",
                         width=200, height=40, anchor="w",
-                        command=lambda cmd=command: cmd(user_id) if cmd else None).place(x=70, y=y_pos)
+                        command=command).place(x=70, y=y_pos)
             icon = Image.open(icon_path).resize((30, 30))
             icon_ctk = ctk.CTkImage(light_image=icon, size=(30, 30))
             ctk.CTkLabel(self, image=icon_ctk, text="", fg_color="#3B3737").place(x=40, y=y_pos + 20, anchor="center")
@@ -783,7 +787,8 @@ class LoginApp(ctk.CTk):
 
         conn.close()
 
-    def show_exit_request_screen(self, user_id= None):
+    def show_exit_request_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -813,7 +818,7 @@ class LoginApp(ctk.CTk):
         ]
 
         for label, icon_path, y_pos, command in nav_buttons:
-            button = ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=lambda cmd=command: cmd(user_id) if cmd else None)
+            button = ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=command)
             button.place(x=70, y=y_pos)
 
             icon = Image.open(icon_path).resize((30, 30), Image.LANCZOS)

@@ -128,16 +128,19 @@ conn.close()
 
 class LoginApp(ctk.CTk):
     def __init__(self):
+        self.current_user_id = None
         super().__init__()
         self.title("Housing Management System - Login")
         self.geometry("1200x750")
         self.resizable(False, False)
         #self.show_login_screen()
-        #self.show_user_dashboard()
+        #self.current_user_id = user_id
+        self.show_user_dashboard()
         self.show_admin_dashboard()
         self.configure(fg_color="white", bg_color="white")
 
     def show_login_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -183,6 +186,7 @@ class LoginApp(ctk.CTk):
         self.register_button.place(relx=0.55, rely=0.8)
 
     def show_register_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -243,6 +247,7 @@ class LoginApp(ctk.CTk):
         self.register_button.place(relx=0.5, rely=0.85, anchor="center")
 
     def login_authenticate(self):
+        user_id = self.current_user_id
         username = self.username_entry.get().strip()
         password = self.password_entry.get().strip()
 
@@ -270,18 +275,22 @@ class LoginApp(ctk.CTk):
                 if role_id == 1:  # Admin role
                     self.show_admin_dashboard()
                 else:  # User role
-                    self.show_user_dashboard(user_id=user_id)
+                    self.current_user_id = user_id
+                    self.show_user_dashboard()
             else:
                 messagebox.showerror("Login Failed", "Invalid credentials. Try again.")
-
-            connection.close()
 
         except mysql.connector.Error as err:
             messagebox.showerror("Database Error", f"Error: {err}")
 
+        finally:
+            if connection.is_connected():
+                connection.close()
+
 
     #show password function
     def show_password(self):
+        user_id = self.current_user_id
 
         if self.show_password_var.get() == 1:
             self.password_entry.configure(show="")
@@ -291,6 +300,7 @@ class LoginApp(ctk.CTk):
             self.confirm_password_entry.configure(show="*")
 
     def register_user(self):
+        user_id = self.current_user_id
         first_name = self.first_name_entry.get().strip()
         last_name = self.last_name_entry.get().strip()
         email = self.email_entry.get().strip()
@@ -346,7 +356,9 @@ class LoginApp(ctk.CTk):
                 conn.close()
 
 
-    # def show_user_dashboard(self, user_id=None):
+    # def show_user_dashboard(self):
+        user_id = self.current_user_id
+        
     #     for widget in self.winfo_children():
     #         widget.destroy()
 
@@ -435,7 +447,9 @@ class LoginApp(ctk.CTk):
     #     ctk.CTkLabel(self.details_frame, text="Availability Status", **label_style).place(x=40, y=190)
     #     ctk.CTkLabel(self.details_frame, text="Maintenance Requests", **label_style).place(x=40, y=240)
 
-    def show_user_dashboard(self, user_id=None):
+    def show_user_dashboard(self):
+        user_id = self.current_user_id
+        
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -543,7 +557,9 @@ class LoginApp(ctk.CTk):
             ctk.CTkLabel(self.details_frame, text=str(value), **value_style).place(x=300, y=y)
 
 
-    def show_rent_payment_screen(self, user_id=None):
+    def show_rent_payment_screen(self):
+        user_id = self.current_user_id
+        
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -571,7 +587,7 @@ class LoginApp(ctk.CTk):
         ]
 
         for label, icon_path, y_pos, command in nav_buttons:
-            ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=lambda cmd=command: cmd(user_id) if cmd else None).place(x=70, y=y_pos)
+            ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=command).place(x=70, y=y_pos)
             icon = Image.open(icon_path).resize((30, 30), Image.LANCZOS)
             icon_ctk = ctk.CTkImage(light_image=icon, size=(30, 30))
             ctk.CTkLabel(self, image=icon_ctk, text="", fg_color="#3B3737").place(x=40, y=y_pos + 20, anchor="center")
@@ -681,7 +697,9 @@ class LoginApp(ctk.CTk):
         self.payment_button_btn.place(relx=0.5, rely=1.2, anchor="center")  
         conn.close()
 
-    def show_maintenance_screen(self, user_id=None):
+    def show_maintenance_screen(self):
+        user_id = self.current_user_id
+        
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -711,7 +729,7 @@ class LoginApp(ctk.CTk):
         for label, icon_path, y_pos, command in sidebar_buttons:
             ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737",
                         width=200, height=40, anchor="w",
-                        command=lambda cmd=command: cmd(user_id) if cmd else None).place(x=70, y=y_pos)
+                        command=command).place(x=70, y=y_pos)
             icon = Image.open(icon_path).resize((30, 30))
             icon_ctk = ctk.CTkImage(light_image=icon, size=(30, 30))
             ctk.CTkLabel(self, image=icon_ctk, text="", fg_color="#3B3737").place(x=40, y=y_pos + 20, anchor="center")
@@ -783,7 +801,9 @@ class LoginApp(ctk.CTk):
 
         conn.close()
 
-    def show_exit_request_screen(self, user_id= None):
+    def show_exit_request_screen(self):
+        user_id = self.current_user_id
+        
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -813,7 +833,7 @@ class LoginApp(ctk.CTk):
         ]
 
         for label, icon_path, y_pos, command in nav_buttons:
-            button = ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=lambda cmd=command: cmd(user_id) if cmd else None)
+            button = ctk.CTkButton(self.sidebar, text=label, font=("Arial", 16), fg_color="#3B3737", width=200, height=40, anchor="w", command=command)
             button.place(x=70, y=y_pos)
 
             icon = Image.open(icon_path).resize((30, 30), Image.LANCZOS)
@@ -898,6 +918,7 @@ class LoginApp(ctk.CTk):
 
 
     def show_admin_dashboard(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -959,6 +980,7 @@ class LoginApp(ctk.CTk):
         self.logout_button.place(relx=0.75, rely=0.75, anchor="center")
    
     def show_assign_room_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -1077,6 +1099,7 @@ class LoginApp(ctk.CTk):
 
     
     def show_add_room_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -1156,6 +1179,7 @@ class LoginApp(ctk.CTk):
 
 
     def show_maintenance_requests_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -1260,6 +1284,7 @@ class LoginApp(ctk.CTk):
 
 
     def show_leave_requests_screen(self):
+        user_id = self.current_user_id
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -1334,6 +1359,7 @@ class LoginApp(ctk.CTk):
 
 
     def show_reports_screen(self):
+        user_id = self.current_user_id
         import mysql.connector
         from fpdf import FPDF
         from tkinter import messagebox
