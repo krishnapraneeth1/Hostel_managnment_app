@@ -131,7 +131,7 @@ class LoginApp(ctk.CTk):
         self.current_user_id = None
         super().__init__()
         self.title("Housing Management System - Login")
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.resizable(False, False)
         #self.show_login_screen()
         #self.current_user_id = user_id
@@ -146,8 +146,8 @@ class LoginApp(ctk.CTk):
 
 
         bg_image = Image.open("UI/login_sceen.png")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -158,10 +158,10 @@ class LoginApp(ctk.CTk):
         self.logo = self.logo.resize((30, 30), Image.LANCZOS)
         self.logo_ctk = ctk.CTkImage(light_image=self.logo, size=(30, 30))
         self.logo_label = ctk.CTkLabel(self, image=self.logo_ctk, text="")
-        self.logo_label.place(relx=0.68, rely=0.20, anchor="center")
+        self.logo_label.place(relx=0.68, rely=0.15, anchor="center")  # Adjusted relx to move it further up
 
         self.label = ctk.CTkLabel(self, text="Management", font=("Arial", 25, "bold"), text_color="black", bg_color="white")
-        self.label.place(relx=0.76, rely=0.20, anchor="center")
+        self.label.place(relx=0.77, rely=0.15, anchor="center")  # Adjusted relx to move it slightly to the right
 
         self.title_label = ctk.CTkLabel(self.login_frame, text="Login / Register", font=("Arial", 25, "bold"), text_color="white")
         self.title_label.place(relx=0.5, rely=0.15, anchor="center")
@@ -191,67 +191,66 @@ class LoginApp(ctk.CTk):
             widget.destroy()
 
         bg_image = Image.open("UI/registeration_screen.jpg")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
-        self.title_label = ctk.CTkLabel(self, text="Sign up to Login", font=("Arial", 28, "bold"), text_color="black")
-        self.title_label.place(relx=0.5, rely=0.38, anchor="center")
+        self.title_label = ctk.CTkLabel(self, text="Sign up to Login", font=("Arial", 23, "bold"), text_color="black")
+        self.title_label.place(relx=0.55, rely=0.35, anchor="center")
 
-        self.register_frame = ctk.CTkFrame(self, width=1050, height=400, corner_radius=20, fg_color="#45403F")
-        self.register_frame.place(relx=0.5, rely=0.70, anchor="center")
+        self.register_frame = ctk.CTkFrame(self, width=900, height=350, corner_radius=20, fg_color="#45403F")
+        self.register_frame.place(relx=0.5, rely=0.65, anchor="center")
 
         self.first_name_label = ctk.CTkLabel(self.register_frame, text="First Name", font=("Arial", 18, "bold"), text_color="white")
-        self.first_name_label.place(x=50, y=50)
-        self.first_name_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E")
-        self.first_name_entry.place(x=170, y=50)
+        self.first_name_label.place(x=30, y=30)
+        self.first_name_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E")
+        self.first_name_entry.place(x=150, y=30)
 
         self.last_name_label = ctk.CTkLabel(self.register_frame, text="Last Name", font=("Arial", 18, "bold"), text_color="white")
-        self.last_name_label.place(x=50, y=110)
-        self.last_name_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E")
-        self.last_name_entry.place(x=170, y=110)
+        self.last_name_label.place(x=30, y=90)
+        self.last_name_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E")
+        self.last_name_entry.place(x=150, y=90)
 
         self.email_label = ctk.CTkLabel(self.register_frame, text="Email", font=("Arial", 18, "bold"), text_color="white")
-        self.email_label.place(x=50, y=170)
-        self.email_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E")
-        self.email_entry.place(x=170, y=170)
+        self.email_label.place(x=30, y=150)
+        self.email_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E")
+        self.email_entry.place(x=150, y=150)
 
         self.student_id_label = ctk.CTkLabel(self.register_frame, text="Student ID", font=("Arial", 18, "bold"), text_color="white")
-        self.student_id_label.place(x=50, y=230)
-        self.student_id_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E")
-        self.student_id_entry.place(x=170, y=230)
+        self.student_id_label.place(x=30, y=210)
+        self.student_id_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E")
+        self.student_id_entry.place(x=150, y=210)
 
         self.mobile_label = ctk.CTkLabel(self.register_frame, text="Mobile Number", font=("Arial", 18, "bold"), text_color="white")
-        self.mobile_label.place(x=520, y=50)
-        self.mobile_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E")
-        self.mobile_entry.place(x=700, y=50)
+        self.mobile_label.place(x=450, y=30)
+        self.mobile_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E")
+        self.mobile_entry.place(x=600, y=30)
 
         self.password_label = ctk.CTkLabel(self.register_frame, text="Password", font=("Arial", 18, "bold"), text_color="white")
-        self.password_label.place(x=520, y=110)
-        self.password_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E", show="*")
-        self.password_entry.place(x=700, y=110)
+        self.password_label.place(x=450, y=90)
+        self.password_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E", show="*")
+        self.password_entry.place(x=600, y=90)
 
         self.confirm_password_label = ctk.CTkLabel(self.register_frame, text="Confirm Password", font=("Arial", 18, "bold"), text_color="white")
-        self.confirm_password_label.place(x=520, y=170)
-        self.confirm_password_entry = ctk.CTkEntry(self.register_frame, width=300, height=35, fg_color="#1E1E1E", show="*")
-        self.confirm_password_entry.place(x=700, y=170)
+        self.confirm_password_label.place(x=450, y=150)
+        self.confirm_password_entry = ctk.CTkEntry(self.register_frame, width=250, height=35, fg_color="#1E1E1E", show="*")
+        self.confirm_password_entry.place(x=600, y=150)
 
-        #show password checkbox for password and confirm password entry
+        # Show password checkbox for password and confirm password entry
         self.show_password_var = ctk.IntVar()
         self.show_password_checkbox = ctk.CTkCheckBox(self.register_frame, text="Show Password", variable=self.show_password_var, text_color="white", bg_color="#45403F", command=self.show_password)
-        self.show_password_checkbox.place(x=700, y=210)
-        
+        self.show_password_checkbox.place(x=600, y=200)
 
         self.register_button = ctk.CTkButton(self.register_frame, text="Register", width=150, height=40, command=self.register_user, font=("Arial", 18, "bold"))
         self.register_button.place(relx=0.5, rely=0.85, anchor="center")
-        
-        #add image as back button
+
+        # Add image as back button
         self.back_button = Image.open("UI/back.png")
-        self.back_button = self.back_button.resize((50, 50), Image.LANCZOS)
-        self.back_button_ctk = ctk.CTkImage(light_image=self.back_button, size=(50, 50))
-        self.back_button = ctk.CTkButton(self, image=self.back_button_ctk, text="", fg_color="#3B3737",hover_color="#3B3737", command=self.show_login_screen)
-        self.back_button.place(relx=0.05, rely=0.95, anchor="center")
+        self.back_button = self.back_button.resize((40, 40), Image.LANCZOS)
+        self.back_button_ctk = ctk.CTkImage(light_image=self.back_button, size=(40, 40))
+        self.back_button = ctk.CTkButton(self, image=self.back_button_ctk, text="", fg_color="white", hover_color="#3B3737", command=self.show_login_screen)
+        self.back_button.place(relx=0.05, rely=0.96, anchor="center")
         
 
     def login_authenticate(self):
@@ -370,13 +369,13 @@ class LoginApp(ctk.CTk):
     #     for widget in self.winfo_children():
     #         widget.destroy()
 
-    #     self.geometry("1200x750")
+    #     self.geometry("1000x650")
     #     self.configure(fg_color="#3B3737", bg_color="#3B3737")
 
     #     #add image to the dashboard
     #     bg_image = Image.open("UI/user_dashboard_screen.jpg")
-    #     bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-    #     self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+    #     bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+    #     self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
     #     self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
     #     self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -461,13 +460,13 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
-        self.configure(fg_color="#3B3737", bg_color="#3B3737")
+        self.geometry("1000x650")
+        self.configure(fg_color="white", bg_color="#3B3737")
 
         # Add background image
         bg_image = Image.open("UI/user_dashboard_screen.jpg")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -482,8 +481,8 @@ class LoginApp(ctk.CTk):
         nav_buttons = [
             ("View my Room Details", "UI/home-button.png", 200, self.show_user_dashboard),
             ("Rent Payment", "UI/key.png", 260, self.show_rent_payment_screen),
-            ("Maintenance Request", "UI/maintainance.png", 320,self.show_maintenance_screen),
-            ("Exit Request", "UI/logout.png", 380,self.show_exit_request_screen)
+            ("Maintenance Request", "UI/maintainance.png", 320, self.show_maintenance_screen),
+            ("Exit Request", "UI/logout.png", 380, self.show_exit_request_screen)
         ]
 
         for idx, (label, icon_path, y_pos, command) in enumerate(nav_buttons):
@@ -503,11 +502,11 @@ class LoginApp(ctk.CTk):
 
         # Main Section Title
         self.dashboard_title = ctk.CTkLabel(self, text="My Room Details", font=("Arial", 24, "bold"), text_color="black")
-        self.dashboard_title.place(relx=0.65, rely=0.25, anchor="center")
+        self.dashboard_title.place(relx=0.7, rely=0.25, anchor="center")  # Adjusted relx to move the title to the right
 
         # Room Details Frame
-        self.details_frame = ctk.CTkFrame(self, width=600, height=300, corner_radius=20, fg_color="#1E1E1E")
-        self.details_frame.place(relx=0.65, rely=0.6, anchor="center")
+        self.details_frame = ctk.CTkFrame(self, width=500, height=250, corner_radius=20, fg_color="#1E1E1E")
+        self.details_frame.place(relx=0.7, rely=0.6, anchor="center")  # Adjusted relx to move the frame to the right
 
         label_style = {"font": ("Arial", 18, "bold"), "text_color": "white"}
         value_style = {"font": ("Arial", 18), "text_color": "white"}
@@ -526,7 +525,7 @@ class LoginApp(ctk.CTk):
 
         cursor.execute("""
             SELECT u.student_id, r.room_number, r.capacity,
-                CASE WHEN r.availability = 'Yes' THEN 'Free' ELSE 'Occupied' END AS availability_status
+            CASE WHEN r.availability = 'Yes' THEN 'Free' ELSE 'Occupied' END AS availability_status
             FROM users u
             JOIN room_allocation ra ON u.user_id = ra.user_id
             JOIN rooms r ON ra.room_id = r.room_id
@@ -560,9 +559,9 @@ class LoginApp(ctk.CTk):
         ]
 
         for i, (label, value) in enumerate(data):
-            y = 40 + i * 50
-            ctk.CTkLabel(self.details_frame, text=label, **label_style).place(x=40, y=y)
-            ctk.CTkLabel(self.details_frame, text=str(value), **value_style).place(x=300, y=y)
+            y = 30 + i * 40
+            ctk.CTkLabel(self.details_frame, text=label, **label_style).place(x=30, y=y)
+            ctk.CTkLabel(self.details_frame, text=str(value), **value_style).place(x=250, y=y)
 
 
     def show_rent_payment_screen(self):
@@ -571,13 +570,13 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="#3B3737")
 
         # Background image
         bg_image = Image.open("UI/user_dashboard_screen.jpg")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -609,9 +608,8 @@ class LoginApp(ctk.CTk):
         ctk.CTkLabel(self, text="Rent Payment", font=("Arial", 24, "bold"), text_color="black").place(relx=0.65, rely=0.25, anchor="center")
 
         # Payment Details Frame
-        payment_frame = ctk.CTkFrame(self, width=600, height=300, corner_radius=20, fg_color="#1E1E1E")
+        payment_frame = ctk.CTkFrame(self, width=500, height=300, corner_radius=20, fg_color="#1E1E1E")
         payment_frame.place(relx=0.65, rely=0.6, anchor="center")
-
 
         conn = mysql.connector.connect(
             host="localhost",
@@ -640,35 +638,32 @@ class LoginApp(ctk.CTk):
 
             full_rent = 1000  # Assume full rent = 1000
             amount_due = full_rent / room_capacity
-            
-
 
         # Create labels for data display
-        label_style = {"font": ("Arial", 18, "bold"), "text_color": "white"}
-        value_style = {"font": ("Arial", 18), "text_color": "white"}
+        label_style = {"font": ("Arial", 16, "bold"), "text_color": "white"}
+        value_style = {"font": ("Arial", 16), "text_color": "white"}
 
-        ctk.CTkLabel(payment_frame, text="Student ID", **label_style).place(x=40, y=40)
-        ctk.CTkLabel(payment_frame, text=str(student_id), **value_style).place(x=300, y=40)
+        ctk.CTkLabel(payment_frame, text="Student ID", **label_style).place(x=20, y=20)
+        ctk.CTkLabel(payment_frame, text=str(student_id), **value_style).place(x=250, y=20)
 
-        ctk.CTkLabel(payment_frame, text="Room ID", **label_style).place(x=40, y=90)
-        ctk.CTkLabel(payment_frame, text=str(room_id), **value_style).place(x=300, y=90)
+        ctk.CTkLabel(payment_frame, text="Room ID", **label_style).place(x=20, y=60)
+        ctk.CTkLabel(payment_frame, text=str(room_id), **value_style).place(x=250, y=60)
 
         # Amount Due
-        ctk.CTkLabel(payment_frame, text="Amount Due", **label_style).place(x=40, y=140)
+        ctk.CTkLabel(payment_frame, text="Amount Due", **label_style).place(x=20, y=100)
 
         if amount_due != "N/A":
             amount_due = float(amount_due)
-            ctk.CTkLabel(payment_frame, text=f"${amount_due:.2f}", **value_style).place(x=300, y=140)
+            ctk.CTkLabel(payment_frame, text=f"${amount_due:.2f}", **value_style).place(x=250, y=100)
         else:
-            ctk.CTkLabel(payment_frame, text="N/A", **value_style).place(x=300, y=140)
+            ctk.CTkLabel(payment_frame, text="N/A", **value_style).place(x=250, y=100)
 
+        ctk.CTkLabel(payment_frame, text="Payment Due Date", **label_style).place(x=20, y=140)
+        ctk.CTkLabel(payment_frame, text=str(due_date), **value_style).place(x=250, y=140)
 
-        ctk.CTkLabel(payment_frame, text="Payment Due Date", **label_style).place(x=40, y=190)
-        ctk.CTkLabel(payment_frame, text=str(due_date), **value_style).place(x=300, y=190)
-
-        ctk.CTkLabel(payment_frame, text="Enter Amount to be Paid", **label_style).place(x=40, y=240)
-        self.amount_entry = ctk.CTkEntry(payment_frame, width=200, height=35, fg_color="#544D4D", text_color="white")
-        self.amount_entry.place(x=300, y=240)
+        ctk.CTkLabel(payment_frame, text="Enter Amount to be Paid", **label_style).place(x=20, y=180)
+        self.amount_entry = ctk.CTkEntry(payment_frame, width=200, height=30, fg_color="#544D4D", text_color="white")
+        self.amount_entry.place(x=250, y=180)
 
         def process_payment():
             entered_amount = self.amount_entry.get()
@@ -683,26 +678,26 @@ class LoginApp(ctk.CTk):
                     VALUES (%s, %s, %s, %s)
                 """, (user_id, room_id, entered_amount, today))
                 conn.commit()
-                ctk.CTkLabel(payment_frame, text="Payment Successful!", text_color="green").place(relx=0.5, rely=1.1, anchor="center")
+                ctk.CTkLabel(payment_frame, text="Payment Successful!", text_color="green").place(relx=0.5, rely=0.9, anchor="center")
             except:
-                ctk.CTkLabel(payment_frame, text="Invalid payment.", text_color="red").place(relx=0.5, rely=1.1, anchor="center")
+                ctk.CTkLabel(payment_frame, text="Invalid payment.", text_color="red").place(relx=0.5, rely=0.9, anchor="center")
 
         # Payment Button as image inside the payment_frame
         self.payment_button = Image.open("UI/pay-per-click.png")
-        self.payment_button = self.payment_button.resize((200, 50), Image.LANCZOS)  
-        self.payment_button_ctk = ctk.CTkImage(light_image=self.payment_button, size=(200, 50))
+        self.payment_button = self.payment_button.resize((150, 40), Image.LANCZOS)
+        self.payment_button_ctk = ctk.CTkImage(light_image=self.payment_button, size=(150, 40))
 
         self.payment_button_btn = ctk.CTkButton(
-            payment_frame,  
+            payment_frame,
             image=self.payment_button_ctk,
-            text="",  
-            fg_color="#1E1E1E",  
-            hover_color="#2F2F2F",  
-            width=200,
-            height=50,
+            text="",
+            fg_color="#1E1E1E",
+            hover_color="#2F2F2F",
+            width=150,
+            height=40,
             command=process_payment
         )
-        self.payment_button_btn.place(relx=0.5, rely=1.2, anchor="center")  
+        self.payment_button_btn.place(relx=0.5, rely=0.85, anchor="center")
         conn.close()
 
     def show_maintenance_screen(self):
@@ -711,12 +706,12 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
-        self.configure(fg_color="#3B3737", bg_color="#3B3737")
+        self.geometry("1000x650")
+        self.configure(fg_color="white", bg_color="#3B3737")
 
         # Background image
-        bg_image = Image.open("UI/user_dashboard_screen.jpg").resize((1200, 750))
-        bg_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = Image.open("UI/user_dashboard_screen.jpg").resize((1000, 650))
+        bg_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         bg_label = ctk.CTkLabel(self, image=bg_ctk, text="")
         bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -751,11 +746,11 @@ class LoginApp(ctk.CTk):
         ctk.CTkLabel(self, text="Maintenance Request", font=("Arial", 24, "bold"), text_color="black").place(relx=0.65, rely=0.25, anchor="center")
 
         # Frame for maintenance
-        form_frame = ctk.CTkFrame(self, width=600, height=300, corner_radius=20, fg_color="#1E1E1E")
+        form_frame = ctk.CTkFrame(self, width=500, height=200, corner_radius=20, fg_color="#1E1E1E")
         form_frame.place(relx=0.65, rely=0.6, anchor="center")
 
-        label_style = {"font": ("Arial", 18, "bold"), "text_color": "white"}
-        value_style = {"font": ("Arial", 18), "text_color": "white"}
+        label_style = {"font": ("Arial", 14, "bold"), "text_color": "white"}
+        value_style = {"font": ("Arial", 14), "text_color": "white"}
 
         conn = mysql.connector.connect(
             host="localhost",
@@ -779,15 +774,15 @@ class LoginApp(ctk.CTk):
             student_id, room_number = result
 
         # Static labels and values
-        ctk.CTkLabel(form_frame, text="Student ID", **label_style).place(x=40, y=40)
-        ctk.CTkLabel(form_frame, text=str(student_id), **value_style).place(x=300, y=40)
+        ctk.CTkLabel(form_frame, text="Student ID", **label_style).place(x=20, y=20)
+        ctk.CTkLabel(form_frame, text=str(student_id), **value_style).place(x=150, y=20)
 
-        ctk.CTkLabel(form_frame, text="Room Number", **label_style).place(x=40, y=90)
-        ctk.CTkLabel(form_frame, text=str(room_number), **value_style).place(x=300, y=90)
+        ctk.CTkLabel(form_frame, text="Room Number", **label_style).place(x=20, y=60)
+        ctk.CTkLabel(form_frame, text=str(room_number), **value_style).place(x=150, y=60)
 
-        ctk.CTkLabel(form_frame, text="Maintenance Description", **label_style).place(x=40, y=140)
-        self.maintenance_description_entry = ctk.CTkTextbox(form_frame, width=400, height=80, fg_color="#544D4D", text_color="white")
-        self.maintenance_description_entry.place(x=40, y=180)
+        ctk.CTkLabel(form_frame, text="Description", **label_style).place(x=20, y=100)
+        self.maintenance_description_entry = ctk.CTkTextbox(form_frame, width=300, height=50, fg_color="#544D4D", text_color="white")
+        self.maintenance_description_entry.place(x=150, y=100)
 
         def submit_maintenance():
             description = self.maintenance_description_entry.get("1.0", "end").strip()
@@ -803,8 +798,8 @@ class LoginApp(ctk.CTk):
             else:
                 ctk.CTkLabel(form_frame, text="Please enter a description", text_color="red").place(relx=0.5, rely=1.1, anchor="center")
 
-        submit_img = Image.open("UI/submit.png").resize((50, 50))
-        submit_ctk = ctk.CTkImage(light_image=submit_img, size=(50, 50))
+        submit_img = Image.open("UI/submit.png").resize((40, 40))
+        submit_ctk = ctk.CTkImage(light_image=submit_img, size=(40, 40))
         ctk.CTkButton(self, image=submit_ctk, text="", fg_color="white", command=submit_maintenance).place(relx=0.65, rely=0.87, anchor="center")
 
         conn.close()
@@ -815,13 +810,13 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
-        self.configure(fg_color="#3B3737", bg_color="#3B3737")
+        self.geometry("1000x650")
+        self.configure(fg_color="white", bg_color="#3B3737")
 
         # Background Image
         bg_image = Image.open("UI/user_dashboard_screen.jpg")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -851,11 +846,11 @@ class LoginApp(ctk.CTk):
         ctk.CTkLabel(self, text="Exit Request", font=("Arial", 24, "bold"), text_color="black").place(relx=0.65, rely=0.25, anchor="center")
 
         # Request Frame
-        exit_frame = ctk.CTkFrame(self, width=600, height=250, corner_radius=20, fg_color="#1E1E1E")
+        exit_frame = ctk.CTkFrame(self, width=400, height=150, corner_radius=20, fg_color="#1E1E1E")
         exit_frame.place(relx=0.65, rely=0.6, anchor="center")
 
-        label_style = {"font": ("Arial", 18, "bold"), "text_color": "white"}
-        value_style = {"font": ("Arial", 18), "text_color": "white"}
+        label_style = {"font": ("Arial", 16, "bold"), "text_color": "white"}
+        value_style = {"font": ("Arial", 16), "text_color": "white"}
 
         # Get user + room info
         import mysql.connector
@@ -883,11 +878,11 @@ class LoginApp(ctk.CTk):
         conn.close()
 
         # Labels
-        ctk.CTkLabel(exit_frame, text="Student ID", **label_style).place(x=40, y=40)
-        ctk.CTkLabel(exit_frame, text=str(student_id), **value_style).place(x=300, y=40)
+        ctk.CTkLabel(exit_frame, text="Student ID", **label_style).place(x=20, y=20)
+        ctk.CTkLabel(exit_frame, text=str(student_id), **value_style).place(x=200, y=20)
 
-        ctk.CTkLabel(exit_frame, text="Room Number", **label_style).place(x=40, y=90)
-        ctk.CTkLabel(exit_frame, text=str(room_number), **value_style).place(x=300, y=90)
+        ctk.CTkLabel(exit_frame, text="Room Number", **label_style).place(x=20, y=70)
+        ctk.CTkLabel(exit_frame, text=str(room_number), **value_style).place(x=200, y=70)
 
         # Submit Button
         def submit_exit_request():
@@ -930,13 +925,13 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="white")
 
         # Background image (left side)
         bg_image = Image.open("UI/login_sceen.png")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(x=0, y=0)
 
@@ -992,19 +987,19 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="white")
 
         # Background image
         bg_image = Image.open("UI/login_sceen.png")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         self.bg_label = ctk.CTkLabel(self, image=self.bg_image_ctk, text="")
         self.bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
         # Assign Frame
-        assign_frame = ctk.CTkFrame(self, width=500, height=400, corner_radius=20, fg_color="#D3D3D3")
-        assign_frame.place(x=680, y=150)
+        assign_frame = ctk.CTkFrame(self, width=450, height=400, corner_radius=20, fg_color="#D3D3D3")
+        assign_frame.place(x=530, y=150)  # Moved to the left by adjusting the x-coordinate
 
         ctk.CTkLabel(assign_frame, text="Assign Room", font=("Arial", 26, "bold"), text_color="black").place(relx=0.5, rely=0.08, anchor="center")
 
@@ -1016,7 +1011,7 @@ class LoginApp(ctk.CTk):
         student_id_combo = ctk.CTkComboBox(assign_frame, width=200)
         student_id_combo.place(x=200, y=60)
 
-        # Room No Dropdown
+        # Room No Dropdownw
         ctk.CTkLabel(assign_frame, text="Room no.", **label_style).place(x=40, y=110)
         room_no_combo = ctk.CTkComboBox(assign_frame, width=200)
         room_no_combo.place(x=200, y=110)
@@ -1035,10 +1030,10 @@ class LoginApp(ctk.CTk):
         import mysql.connector
         try:
             conn = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="root@123",
-                database="housing_management"
+            host="localhost",
+            user="root",
+            password="root@123",
+            database="housing_management"
             )
             cursor = conn.cursor()
 
@@ -1111,18 +1106,18 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="white")
 
         # Background image
         bg_image = Image.open("UI/login_sceen.png")
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         ctk.CTkLabel(self, image=bg_image_ctk, text="").place(relx=0.5, rely=0.5, anchor="center")
 
         # Frame for Add Room
-        add_room_frame = ctk.CTkFrame(self, width=500, height=400, corner_radius=20, fg_color="#D3D3D3")
-        add_room_frame.place(x=680, y=150)
+        add_room_frame = ctk.CTkFrame(self, width=450, height=400, corner_radius=20, fg_color="#D3D3D3")
+        add_room_frame.place(x=530, y=150)  # Moved to the left by adjusting the x-coordinate
 
         ctk.CTkLabel(add_room_frame, text="Add Room", font=("Arial", 26, "bold"), text_color="black").place(relx=0.5, rely=0.08, anchor="center")
 
@@ -1165,7 +1160,7 @@ class LoginApp(ctk.CTk):
                 cursor = conn.cursor()
 
                 cursor.execute("INSERT INTO rooms (room_number, availability, capacity) VALUES (%s, %s, %s)",
-                            (room_no, availability, capacity))
+                               (room_no, availability, capacity))
                 conn.commit()
                 conn.close()
                 messagebox.showinfo("Success", "Room added successfully.")
@@ -1176,14 +1171,14 @@ class LoginApp(ctk.CTk):
         add_icon = Image.open("UI/user.png").resize((30, 30), Image.LANCZOS)
         add_ctk = ctk.CTkImage(light_image=add_icon, size=(30, 30))
         ctk.CTkButton(add_room_frame, text="Add", image=add_ctk, compound="right", font=("Arial", 18, "bold"),
-                    command=add_room, width=180, height=40, fg_color="#544D4D").place(relx=0.58, y=300, anchor="center")
+                command=add_room, width=180, height=40, fg_color="#544D4D").place(relx=0.58, y=300, anchor="center")
 
         # Back Button
         back_image = Image.open("UI/back.png").resize((50, 50), Image.LANCZOS)
         back_ctk = ctk.CTkImage(light_image=back_image, size=(50, 50))
         ctk.CTkButton(self, image=back_ctk, text="", width=50, height=50,
-                fg_color="transparent", hover_color="gray",
-                command=self.show_admin_dashboard).place(x=1100, y=680)
+            fg_color="transparent", hover_color="gray",
+            command=self.show_admin_dashboard).place(x=1100, y=680)
 
 
     def show_maintenance_requests_screen(self):
@@ -1191,20 +1186,20 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="white")
 
         # Background image
-        bg_image = Image.open("UI/request_screen.png").resize((1200, 750), Image.LANCZOS)
-        bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = Image.open("UI/request_screen.png").resize((1000, 650), Image.LANCZOS)
+        bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         ctk.CTkLabel(self, image=bg_image_ctk, text="").place(relx=0.5, rely=0.5, anchor="center")
 
         # Frame
-        frame = ctk.CTkFrame(self, width=600, height=400, corner_radius=20, fg_color="#D3D3D3")
-        frame.place(x=530, y=130)  # Moved slightly to the left
+        frame = ctk.CTkFrame(self, width=500, height=400, corner_radius=20, fg_color="#D3D3D3")
+        frame.place(x=430, y=130)  # Moved slightly to the left
 
         # Title
-        ctk.CTkLabel(self, text="Maintenance Requests", font=("Arial", 24, "bold"), text_color="black").place(x=820, y=80, anchor="center")
+        ctk.CTkLabel(self, text="Maintenance Requests", font=("Arial", 24, "bold"), text_color="black").place(relx=0.7, rely=0.1, anchor="center")
 
         label_style = {"font": ("Arial", 18, "bold"), "text_color": "black"}
         value_style = {"font": ("Arial", 18), "text_color": "white"}
@@ -1296,20 +1291,20 @@ class LoginApp(ctk.CTk):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.geometry("1200x750")
+        self.geometry("1000x650")
         self.configure(fg_color="white", bg_color="white")
 
         # Background Image
         bg_image = Image.open("UI/login_sceen.png")  # Adjust image path
-        bg_image = bg_image.resize((1200, 750), Image.LANCZOS)
-        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1200, 750))
+        bg_image = bg_image.resize((1000, 650), Image.LANCZOS)
+        self.bg_image_ctk = ctk.CTkImage(light_image=bg_image, size=(1000, 650))
         ctk.CTkLabel(self, image=self.bg_image_ctk, text="").place(relx=0.5, rely=0.5, anchor="center")
 
         # Title
         ctk.CTkLabel(self, text="Leave Requests", font=("Arial", 28, "bold"), text_color="black").place(relx=0.75, rely=0.12, anchor="center")
 
         # Card
-        card = ctk.CTkFrame(self, width=500, height=250, fg_color="#D9D9D9", corner_radius=20)
+        card = ctk.CTkFrame(self, width=400, height=200, fg_color="#D9D9D9", corner_radius=20)
         card.place(relx=0.75, rely=0.45, anchor="center")
 
         label_style = {"font": ("Arial", 20, "bold"), "text_color": "black"}
